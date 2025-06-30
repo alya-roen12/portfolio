@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alya Amani - Computer Science Student</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #667eea;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #667eea;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Main Content */
+      .main-content {
+        background: white;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #333;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .profile-placeholder {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .skills-courses {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skill-item {
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+        margin-top: 2rem;
+      }
+
+      .competency-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        background: white;
+      }
+
+      .competency-table th,
+      .competency-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .competency-table th {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        font-size: 1rem;
+      }
+
+      .competency-table td {
+        color: #333;
+        font-size: 0.95rem;
+      }
+
+      .competency-table tr:hover {
+        background: #f3f4f6;
+      }
+
+      .contact {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-5px);
+      }
+
+     .contact-icon-img {
+  width: 30px; /* Set a smaller width for the images */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 10px; /* Add some space above the images */
+}
+
+
+      .footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .skills-courses {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Alya Amani</div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#competencies" class="nav-link">Competencies</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Alya Amani</h1>
+      <p>Computer Science Student | Front-End Development | Cybersecurity</p>
+      <a href="#about" class="btn">Discover My Journey</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <div class="main-content">
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div><div class="profile-placeholder">👩‍💻</div></div>
+          <div class="about-text">
+            <p>Hello! I'm Alya Amani, a passionate Computer Science student at UiTM Melaka. Currently pursuing my Diploma in Computer Science with a focus on front-end development and cybersecurity.</p>
+            <p>My academic journey has been enriching, with coursework covering algorithms, data structures, web development, database management, and computer security. I maintain a solid academic performance with a current CGPA of 2.97.</p>
+            <p>I'm eager to apply my knowledge in real-world scenarios through my upcoming industrial training and am always excited to learn new technologies and tackle challenging problems.</p>
+          </div>
+        </div>
+
+        <div class="skills-courses">
+          <div>
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #667eea; font-size: 1.8rem;">Technical Skills</h3>
+            <div class="skills">
+              <div class="skill-item"><div class="skill-icon">💻</div><h4>Programming</h4><p>C++, Java, JavaScript, SQL, PHP</p></div>
+              <div class="skill-item"><div class="skill-icon">🌐</div><h4>Web Development</h4><p>HTML, CSS, JavaScript</p></div>
+              <div class="skill-item"><div class="skill-icon">🛡️</div><h4>Cybersecurity</h4><p>Computer Security Fundamentals</p></div>
+              <div class="skill-item"><div class="skill-icon">🎨</div><h4>Design Tools</h4><p>Photoshop, Lightroom, Illustrator</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competencies Section -->
+    <section id="competencies" class="section">
+      <div class="container">
+        <h2 class="section-title">Explore My Competencies</h2>
+        <div class="table-wrapper">
+          <table class="competency-table">
+            <thead>
+              <tr><th>Course</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Fundamentals of Algorithms and Computer Problem Solving</td><td>Efficient problem solving through algorithm design and analysis.</td></tr>
+              <tr><td>Interactive Multimedia</td><td>Design principles and multimedia development techniques.</td></tr>
+              <tr><td>Fundamentals of Operating Systems</td><td>Process, memory, and file system management.</td></tr>
+              <tr><td>Fundamentals of Data Structures</td><td>Arrays, linked lists, stacks, queues, trees, and optimization techniques.</td></tr>
+              <tr><td>Introduction to Web and Mobile Application</td><td>Basics of front-end and back-end web/mobile app development.</td></tr>
+              <tr><td>Introduction to Data Communication and Networking</td><td>Understanding OSI/TCP-IP models and network applications.</td></tr>
+              <tr><td>Fundamentals of Entrepreneurship</td><td>Business planning, marketing, and financial literacy.</td></tr>
+              <tr><td>Object-Oriented Programming</td><td>Principles of OOP such as classes, inheritance, and encapsulation.</td></tr>
+              <tr><td>Introduction to Database Management</td><td>Relational databases, SQL queries, and database design.</td></tr>
+              <tr><td>Visual Programming</td><td>Interactive applications using visual programming interfaces.</td></tr>
+              <tr><td>Information System Development</td><td>System analysis, design, and implementation using modern methodologies.</td></tr>
+              <tr><td>Programming Paradigms</td><td>Procedural, object-oriented, functional, and declarative programming styles.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+<!-- Contact Section -->
+<section id="contact" class="section contact">
+  <div class="container">
+    <h2 class="section-title" style="color: white;">Contact Information</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3>Email</h3>
+        <p>alyasaya10@gmail.com</p>
+        <img src="asset/email.png" alt="Email" class="contact-icon-img" />
+      </div>
+      <div class="contact-item">
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/alya-amani-423787335" target="_blank">
+          <img src="asset/linkedln.png" alt="LinkedIn" class="contact-icon-img" />
+        </a>
+      </div>
+      <div class="contact-item">
+        <h3>GitHub</h3>
+        <h4>alya-roen12</h4>
+        <a href="https://github.com/alya-roen12" target="_blank">
+          <img src="asset/github.png" alt="GitHub" class="contact-icon-img"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Alya Amani. Pursuing excellence in Computer Science 🚀</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.style.background = "rgba(255, 255, 255, 0.98)";
+      } else {
+        navbar.style.background = "rgba(255, 255, 255, 0.95)";
+      }
+    });
+  </script>
+</body>
+</html>
